@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gojiaju.dao.SysMapper" >
+  <resultMap id="BaseResultMap" type="com.gojiaju.dao.entity.Sys" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+  </resultMap>
+  
+    <select id="selectAll" resultType="com.gojiaju.dao.entity.Sys">
+ 	select * from test.SysCode 
+  </select>
+  
+  <insert id="insertMessage" parameterType="com.gojiaju.dao.entity.Sys">
+  	insert into syscode (type,code,value,memo) 
+  	values(#{sys.type},#{sys.code},#{sys.value},#{sys.memo})
+  </insert>
+  
+  <update id="updateMessage" parameterType="com.gojiaju.dao.entity.Sys">
+  	update syscode set id=#{sys.id},type=#{sys.type},code=#{sys.code},value=#{sys.value},memo=#{sys.memo}
+  	where id = #{sys.id}
+  </update>
+  
+  <delete id="deleteMessage" parameterType="java.lang.Long">
+  	delete from syscode where syscode.id =#{id}
+  </delete>
+  
+  <select id="selectMessageById" parameterType="java.lang.Long" resultType="com.gojiaju.dao.entity.Sys">
+  	select syscode.type,syscode.code,syscode.value,syscode.memo from test.syscode
+  	where id = #{id}
+  </select>
+<!--   <sql id="Base_Column_List" > -->
+<!--     id, type, code, value, memo -->
+<!--   </sql> -->
+<!--   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" > -->
+<!--     select  -->
+<!--     <include refid="Base_Column_List" /> -->
+<!--     from syscode -->
+<!--     where id = #{id,jdbcType=BIGINT} -->
+<!--   </select> -->
+<!--   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" > -->
+<!--     delete from syscode -->
+<!--     where id = #{id,jdbcType=BIGINT} -->
+<!--   </delete> -->
+<!--   <insert id="insert" parameterType="com.ec.common.bean.SysCode" > -->
+<!--     insert into syscode (id, type, code,  -->
+<!--       value, memo) -->
+<!--     values (#{id,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR},  -->
+<!--       #{value,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}) -->
+<!--   </insert> -->
+<!--   <insert id="insertSelective" parameterType="com.gojiaju.dao.entity.Sys" > -->
+<!--     insert into syscode -->
+<!--     <trim prefix="(" suffix=")" suffixOverrides="," > -->
+<!--       <if test="id != null" > -->
+<!--         id, -->
+<!--       </if> -->
+<!--       <if test="type != null" > -->
+<!--         type, -->
+<!--       </if> -->
+<!--       <if test="code != null" > -->
+<!--         code, -->
+<!--       </if> -->
+<!--       <if test="value != null" > -->
+<!--         value, -->
+<!--       </if> -->
+<!--       <if test="memo != null" > -->
+<!--         memo, -->
+<!--       </if> -->
+<!--     </trim> -->
+<!--     <trim prefix="values (" suffix=")" suffixOverrides="," > -->
+<!--       <if test="id != null" > -->
+<!--         #{id,jdbcType=BIGINT}, -->
+<!--       </if> -->
+<!--       <if test="type != null" > -->
+<!--         #{type,jdbcType=VARCHAR}, -->
+<!--       </if> -->
+<!--       <if test="code != null" > -->
+<!--         #{code,jdbcType=VARCHAR}, -->
+<!--       </if> -->
+<!--       <if test="value != null" > -->
+<!--         #{value,jdbcType=VARCHAR}, -->
+<!--       </if> -->
+<!--       <if test="memo != null" > -->
+<!--         #{memo,jdbcType=VARCHAR}, -->
+<!--       </if> -->
+<!--     </trim> -->
+<!--   </insert> -->
+<!--   <update id="updateByPrimaryKeySelective" parameterType="com.gojiaju.dao.entity.Sys" > -->
+<!--     update t_sys_code -->
+<!--     <set > -->
+<!--       <if test="type != null" > -->
+<!--         type = #{type,jdbcType=VARCHAR}, -->
+<!--       </if> -->
+<!--       <if test="code != null" > -->
+<!--         code = #{code,jdbcType=VARCHAR}, -->
+<!--       </if> -->
+<!--       <if test="value != null" > -->
+<!--         value = #{value,jdbcType=VARCHAR}, -->
+<!--       </if> -->
+<!--       <if test="memo != null" > -->
+<!--         memo = #{memo,jdbcType=VARCHAR}, -->
+<!--       </if> -->
+<!--     </set> -->
+<!--     where id = #{id,jdbcType=BIGINT} -->
+<!--   </update> -->
+<!--   <update id="updateByPrimaryKey" parameterType="com.ec.common.bean.SysCode" > -->
+<!--     update t_sys_code -->
+<!--     set type = #{type,jdbcType=VARCHAR}, -->
+<!--       code = #{code,jdbcType=VARCHAR}, -->
+<!--       value = #{value,jdbcType=VARCHAR}, -->
+<!--       memo = #{memo,jdbcType=VARCHAR} -->
+<!--     where id = #{id,jdbcType=BIGINT} -->
+<!--   </update> -->
+</mapper>
